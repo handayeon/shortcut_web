@@ -39,5 +39,7 @@ AI 스피커 NUGU 단축키 서비스
 
 * * *
 Designer: Kang Eunseo
+
 Front-End Developer: Kang Eunseo, Ham Jihyeon
+
 Back-End Developer: Nam Jungyun
