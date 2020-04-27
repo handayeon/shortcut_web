@@ -1,11 +1,162 @@
 <!DOCTYPE html>
-<html>
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HOME</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--import bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.6/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+    <!-- icon & css setting -->
+    <link rel="shortcut icon" href="img/icon.svg">
+    <link rel="icon" href="img/icon.svg">
+    <link rel="stylesheet" href="css/index.css">
+    <script src="js/index.js"></script>
 </head>
+
 <body>
-    
+    <div class="container">
+        
+
+        <!-- 상단 네비게이션 바 -->
+        <nav class="navbar navbar-expand-lg navbar-light mt-3 mb-3">
+            <a class="navbar-brand" href="#"><img src="img/logo.svg" alt="logo" id="logo"></a>
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarTop" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        
+            <div class="collapse navbar-collapse" id="navbarTop">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item"><a class="nav-link" href="#" id="home">홈</a> </li>
+                    <li class="nav-item"><a class="nav-link" href="list.html" id="list">목록보기</a> </li>
+                    <li class="nav-item"><a class="nav-link" href="register.html" id="register">등록하기</a> </li>
+                </ul>
+            </div>
+        </nav>
+
+
+        <!-- 슬라이드 -->
+        <div id="demo" class="carousel slide mb-4 border" data-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img class="d-block w-100" src="img/mainImg1.svg" alt="First slide" id="mainImg1">
+                </div>
+                <div class="carousel-item">
+                    <img class="d-block w-100" src="img/mainImg2.svg" alt="Second slide" id="mainImg2">
+                </div>
+                <div class="carousel-item">
+                    <img class="d-block w-100" src="img/mainImg3.svg" alt="Third slide" id="mainImg3"> 
+                </div>
+                
+                <a class="carousel-control-prev" href="#demo" data-slide="prev">
+                    <img src="img/left.svg" alt="previous arrow">
+                </a>
+                <a class="carousel-control-next" href="#demo" data-slide="next">
+                    <img src="img/right.svg" alt="next arrow">
+                </a>
+                
+                <!-- 인디케이터 -->
+                <ul class="carousel-indicators">
+                    <li data-target="#demo" data-slide-to="0" class="active"></li>
+                    <li data-target="#demo" data-slide-to="1"></li>
+                    <li data-target="#demo" data-slide-to="2"></li>
+                </ul>
+            </div>
+        </div>
+
+
+        <!-- 하단 두 개 영역: 새로 등록된 단축키, 단축키 검색 -->
+        <div class="row mb-5">
+            <div class="col">
+                새로 등록된 단축키 <img src="img/new.svg" alt="new icon" id="new-icon"> <img src="img/macOS.svg" alt="macOS icon" id="mac-icon">
+                <div class="bg-light container p-4 mt-2 footerBox border text-right">
+                    <table class="table text-center">
+                        <thead>
+                            <tr>
+                                <th>No</th>
+                                <th>프로그램</th>
+                                <th>수행작업</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>Ai</td>
+                                <td class="text-left">그룹 해제하기</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>Ps</td>
+                                <td class="text-left">전체 이미지 밝게 하기</td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>Ps</td>
+                                <td class="text-left">정리 도구가 선택될 때 불투명도 ...</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <button class="btn btn-sm btn-primary">
+                        전체 단축키 보기
+                    </button>
+                </div>
+            </div>
+            <!-- 하단 새로 등록된 단축키 영역 끝 -->
+
+            <div class="col">
+                단축키 검색 <img src="img/search.svg" alt="search icon" id="search-icon">
+                <div class="bg-light container p-4 mt-2 footerBox border">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-xs-2">
+                                            <div class="form-group">
+                                                <select id="inputState" class="form-control">
+                                                    <option selected>OS 선택</option>
+                                                    <option>윈도우</option>
+                                                    <option>맥</option>                                                    
+                                                </select>
+                                                </div>
+                                        </div>
+                                        <div class="col-xs-3">
+                                            <div class="form-group">
+                                                <select id="inputState" class="form-control" >
+                                                    <option selected>프로그램 선택</option>
+                                                    <option>일러스트</option>
+                                                    <option>포토샵</option>
+                                                    <option>엑셀</option>
+                                                </select>
+                                                </div>
+                                        </div>
+                                        <div class="col-xs-6">
+                                            <div class="form-group">
+                                                <input type="text" placeholder="입력" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-1">
+                                            <button type="button" class="btn"><img src="img/search.svg" alt="search icon" id="search-icon"></button>
+                                        </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row text-center mt-4">
+                        <div class="col"><a href="#"> 검색결과 보러가기 → </a></div>
+                    </div>
+                </div>
+            </div>
+            <!-- 하단 단축키 검색 영역 끝 -->
+        </div>
+
+
+    </div>
+
+
+    <!-- js setting -->
+    <script src="js/index.js"></script>
 </body>
 </html>

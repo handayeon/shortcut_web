@@ -36,3 +36,8 @@ AI 스피커 NUGU 단축키 서비스
 * regShortValue: 입력한 단축키 값
 * cancelBtn: 취소버튼
 * ApplyBtn: 등록신청버튼
+
+* * *
+Designer: Kang Eunseo
+Front-End Developer: Kang Eunseo, Ham Jihyeon
+Back-End Developer: Nam Jungyun
