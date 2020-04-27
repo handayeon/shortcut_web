@@ -1,0 +1,36 @@
+
+        ul li {
+            list-style-type: none;
+            float: left;
+            margin-left: 20px;
+            text-align: center;
+            border: none;
+            
+        }
+        select{
+            width: 150px;
+            height: 50px;
+            font-size: 15px;
+            border: none;
+        }
+        input{
+            width: 500px;
+            height: 50px;
+            border: none;
+            outline: none;
+        }
+
+       table {
+           border: 1px;
+       }
+
+       button[type=submit] {
+           border: none;
+           background-color: white;
+          
+       }
+       
+       img {
+           height: 30px;
+           width: 30px;
+       }
