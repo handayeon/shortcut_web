@@ -12,7 +12,14 @@ class Logic:
             os = request.POST['s1']
             program = request.POST['s2']
             searchValue = request.POST['searchValue']
-            short_lists = Shortcut.objects.filter(os=os, program=program,action__icontains=searchValue)
+            if os == "" and program == "":
+                short_lists = Shortcut.objects.filter(action__icontains=searchValue)
+            elif os == "":
+                short_lists = Shortcut.objects.filter(program=program,action__icontains=searchValue)
+            elif program == "":
+                short_lists = Shortcut.objects.filter(os=os,action__icontains=searchValue)
+            else : 
+                short_lists = Shortcut.objects.filter(os=os, program=program,action__icontains=searchValue)
             for short_list in short_lists:
                 print(short_list.num)
                 count+=1
