@@ -29,7 +29,7 @@ class Logic:
             print("get")
             short_lists = Shortcut.objects.order_by('num')
             #count = Shortcut.objects.count()
-        return render(request, "web/list.html",{'short_lists':short_lists})
+        return short_lists
 
     def register(request):
         os = request.POST['s1']

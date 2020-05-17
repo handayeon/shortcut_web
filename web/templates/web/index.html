@@ -15,6 +15,12 @@
     <link rel="icon" href="{% static 'img/icon.svg' %}">
     <link rel="stylesheet" href="{% static 'css/index.css' %}">
     <script src="{% static 'js/index.js' %}"></script>
+    <script>
+        function sm(){
+            f1.submit();
+        }
+    </script>
+
 </head>
 
 <body>
@@ -114,9 +120,11 @@
                         <div class="col-xs-12">
                             <div class="card-body">
                                     <div class="row">
+                                        <form action = "{% url 'index'%}" method = "POST" name=f1>
+                                            {% csrf_token %}
                                         <div class="col-xs-2">
                                             <div class="form-group">
-                                                <select id="inputState" class="form-control">
+                                                <select id="inputState" class="form-control" name=s1 >
                                                     <option selected>OS 선택</option>
                                                     <option>윈도우</option>
                                                     <option>맥</option>                                                    
@@ -125,7 +133,7 @@
                                         </div>
                                         <div class="col-xs-3">
                                             <div class="form-group">
-                                                <select id="inputState" class="form-control" >
+                                                <select id="inputState" class="form-control" name=s2>
                                                     <option selected>프로그램 선택</option>
                                                     <option>일러스트</option>
                                                     <option>포토샵</option>
@@ -135,18 +143,35 @@
                                         </div>
                                         <div class="col-xs-6">
                                             <div class="form-group">
-                                                <input type="text" placeholder="입력" class="form-control">
+                                                <input type="text" placeholder="입력" class="form-control" name="searchValue">
                                             </div>
                                         </div>
                                         <div class="col-xs-1">
-                                            <button type="button" class="btn"><img src="{% static 'img/search.svg' %}" alt="search icon" id="search-icon"></button>
+                                            <button type="submit" class="btn"><img src="{% static 'img/search.svg' %}" alt="search icon" id="search-icon"></button>
                                         </div>
+                                        </form>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    <!-- <div class="row text-center">
+                    <table bgcolor="#e9ecef">
+                        {% if short_lists == None %}
+                        <tr><td>검색 결과가 없습니다.</td></tr>
+                        {% endif %}
+                        {% for short_list in short_lists %}
+                        <tr>
+                            <td id="listNum">{{short_list.num}}</td>
+                            <td id="os">{{short_list.os}}</td>
+                            <td id="program">{{short_list.program}}</td>
+                            <td id="listRepValue">{{short_list.action}}</td>
+                            <td id="listShortValue">{{short_list.short}}</td>
+                        </tr>
+                        {% endfor %}
+                    </table>
+                    </div> -->
                     <div class="row text-center mt-4">
-                        <div class="col"><a href="#"> 검색결과 보러가기 → </a></div>
+                        <div class="col"><a onclick="sm();"> 검색결과 보러가기 → </a></div>
                     </div>
                 </div>
             </div>
