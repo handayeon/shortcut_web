@@ -1,0 +1,5 @@
+Django==2.1.12
+django-el-pagination==3.3.0
+mysqlclient==1.4.6
+PyMySQL==0.9.3
+pytz==2020.1

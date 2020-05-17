@@ -26,7 +26,8 @@
     <div class="container">
         <!-- 상단 네비게이션 바 -->
         <nav class="navbar navbar-expand-lg navbar-light mt-3 mb-3">
-            <a class="navbar-brand" href="#"><img src="{% static 'img/logo.svg' %}" alt="logo" id="logo"></a>
+            <a class="navbar-brand" href="{% url 'index' %}"><img src="{% static 'img/logo.svg' %}" alt="logo"
+                    id="logo"></a>
             <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
                 data-target="#navbarTop" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -40,25 +41,35 @@
                 </ul>
             </div>
         </nav>
-        
+
         <div class="col">
             <div class="bg-light container p-4 mt-2 footerBox border">
                 <div class="row">
-                    <form action = "{% url 'show_list'%}" method = "POST">
+                    <form action="{% url 'show_list'%}" method="POST">
                         {% csrf_token %}
-                        <select name="s1" id="searchOs">
-                            <option selected value="">os선택</option>
-                            <option value="윈도우">windows</option>
-                            <option value="맥">mac</option>
-                        </select>
-                        <select name="s2" id="searchProg">
-                            <option selected value="">프로그램 선택</option>
-                            <option value="일러스트">일러스트</option>
-                            <option value="포토샵">포토샵</option>
-                            <option value="엑셀">엑셀</option>
-                        </select>
-                        <input type="text" name="searchValue" width="30" placeholder=" 찾으실 단축키이름을 입력하세요" id="searchValue">
-                        <button type="submit" id="searchBtn"><img src="{% static 'img/11.png' %}" class="searchImg"></button>
+                        <table>
+                            <tr>
+                                <td style="background-color: #ffffff;">
+                                    <select name="s1" id="searchOs">
+                                        <option selected value="">os선택</option>
+                                        <option value="윈도우">windows</option>
+                                        <option value="맥">mac</option>
+                                    </select>
+                                    <select name="s2" id="searchProg">
+                                        <option selected value="">프로그램 선택</option>
+                                        <option value="일러스트">일러스트</option>
+                                        <option value="포토샵">포토샵</option>
+                                        <option value="엑셀">엑셀</option>
+                                    </select>
+                                    <input type="text" name="searchValue" width="30" placeholder=" 찾으실 단축키이름을 입력하세요"
+                                        id="searchValue">
+                                    <button type="submit" id="searchBtn"><img src="{% static 'img/11.png' %}"
+                                            class="searchImg"></button>
+                                </td>
+                            </tr>
+
+                        </table>
+
                     </form>
                 </div>
                 <div class="row text-center">
@@ -76,10 +87,15 @@
                         </tr>
                         {% endfor %}
                     </table>
+                    
+                    
                 </div>
             </div>
         </div>
-</body>
-
-
-</html>
+        
+        
+        
+    </body>
+    
+    
+    </html>
