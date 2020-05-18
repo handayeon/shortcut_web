@@ -12,17 +12,9 @@ def index(request):
     return render(request, 'web/index.html')
 
 def show_list(request):
-<<<<<<< HEAD
     print("list")
     show_lists = Logic.get_list(request)
     return render(request, "web/list.html",{'short_lists': show_lists})
-=======
-    shortcut = Shortcut.objects.all()
-    # paginator = Paginator(short_lists, 10) # Show 20 contacts per page
-    # page = request.GET.get('page')
-
-    return render(request, 'web/list.html', {'shortcut': shortcut})
->>>>>>> c45eace11bf9332fc9c96a5387c36c7b88e48166
 
 def register(request):
     if request.method == "POST":
