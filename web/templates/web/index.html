@@ -17,6 +17,7 @@
     <script src="{% static 'js/index.js' %}"></script>
     <script>
         function sm(){
+            f1.action = "{% url 'show_list'%}";
             f1.submit();
         }
     </script>
@@ -183,7 +184,7 @@
                     
                     <div class="row text-center mt-4">
                         <div class="col">
-                            <a href="{% url 'show_list' %}"> 검색결과 보러가기 → </a>
+                            <a onclick=sm();> 검색결과 보러가기 → </a>
                         </div>
                     </div>
                 </div>
