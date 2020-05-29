@@ -6,6 +6,8 @@ from django.core.paginator import Paginator
 
 
 def index(request):
+    if request.session.get('os', False):
+        request.session.clear()
     if request.method == "POST":
         show_lists = Logic.get_list(request)
         return render(request, "web/index.html",{'short_lists': show_lists})
