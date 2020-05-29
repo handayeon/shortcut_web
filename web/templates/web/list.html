@@ -81,6 +81,7 @@
                             </tr>
                         </thead>
                         <tbody>
+                            {% paginate short_lists %}
                             {% if short_lists == None %}
                             <tr>
                                 <td colspan="5">검색 결과가 없습니다.</td>
@@ -100,6 +101,7 @@
 
                 </div>
 
+                <div align="center">{% show_pages %}</div>
 
                 <div class="pagination">
                     <span class="step-links">
