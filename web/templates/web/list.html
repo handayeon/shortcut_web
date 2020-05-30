@@ -81,12 +81,12 @@
                             </tr>
                         </thead>
                         <tbody>
-                            {% paginate short_lists %}
                             {% if short_lists == None %}
                             <tr>
                                 <td colspan="5">검색 결과가 없습니다.</td>
                             </tr>
-                            {% endif %}
+                            {% else %}
+                            {% paginate short_lists %}
                             {% for short_list in short_lists %}
                             <tr>
                                 <td id="listNum">{{short_list.num}}</td>
@@ -94,8 +94,9 @@
                                 <td id="program">{{short_list.program}}</td>
                                 <td id="listRepValue">{{short_list.action}}</td>
                                 <td id="listShortValue">{{short_list.short}}</td>
-                                {% endfor %}
+                                
                             </tr>
+                            {% endfor %}
                         </table>
 
 
@@ -125,8 +126,7 @@
             
         </div>
 
-
-
+        {% endif %}
 </body>
 
 
