@@ -2,8 +2,6 @@
     margin:0 auto;
 }
 select {
-    width: 500px;
-    height: 50px;
     font-size: 15px;
     background-color: #ffffff;
     border: none;
@@ -14,9 +12,10 @@ option {
     background-color: #ffffff;
 }
 
+/* 
 input[type=text] {
-    /* width: 900px;
-    height: 50px; */
+    width: 900px;
+    height: 50px;
     background-color: #ffffff;
     border: none;
 
@@ -27,4 +26,4 @@ input[type=button] {
     height: 50px;
     background-color: #ffffff;
     border: none;
-}
+} */

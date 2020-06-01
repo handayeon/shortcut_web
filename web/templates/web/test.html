@@ -3,7 +3,7 @@
 <head>
     <title>test</title>
 {% load static %}
-<link rel="stylesheet" href="{% static 'css/r2.css' %}">
+<!-- <link rel="stylesheet" href="{% static 'css/r2.css' %}"> -->
 <!-- <script language="javascript" src="{% static 'js/r2.js' %}"></script> -->
 
 <!--import bootstrap -->
@@ -46,51 +46,25 @@
             </div>
         </nav>
 
-        <div class="row mb-5">
            
             <!-- 하단 새로 등록된 단축키 영역 끝 -->
             <div class="col">
                 <div class="bg-light container p-4 mt-2 footerBox border">
-                    <div class="row">
-                        <!-- <div class="col-xs-12"> -->
-                            <div class="card-body">
-                                <div class="row">
-                                    <form action="{% url 'index'%}" method="POST" name=f1 class="form-inline">
-                                        {% csrf_token %}
-                                        
-
-                                          <table>
-                                            <tr>
-                                                <td style="background-color: white;">
-                                                    <select name="s1" id="searchOs">
-                                                        <option selected value="">os선택</option>
-                                                        <option value="윈도우">windows</option>
-                                                        <option value="맥">mac</option>
-                                                    </select>
-                                                    <select name="s2" id="searchProg">
-                                                        <option selected value="">프로그램 선택</option>
-                                                        <option value="일러스트">일러스트</option>
-                                                        <option value="포토샵">포토샵</option>
-                                                        <option value="엑셀">엑셀</option>
-                                                    </select>
-                                                    <div class="input-group">
-                                                        <input type="text" class="form-control" placeholder="Search" name="search">
-                                                        <div class="input-group-btn">
-                                                            <button type="submit" id="searchBtn"><img src="{% static 'img/search.svg' %}"
-                                                                class="searchImg"></button>
-                                                        </div>
-                                                      </div>
-                                                </td>
-                                            </tr>
-                                        </table>
-                                        
-                                    </form>
-                            
-                                <!-- </div>
-                                
+                    <div class="container">
+                        <form>
+                          <div class="form-group row">
+                            <div class="col-xs-2">
+                              <input class="form-control" id="ex1" type="text">
                             </div>
-                        </div> -->
-                    </div>
+                            <div class="col-xs-3">
+                              <input class="form-control" id="ex2" type="text">
+                            </div>
+                            <div class="col-xs-4">
+                              <input class="form-control" id="ex3" type="text">
+                            </div>
+                          </div>
+                        </form>
+                      </div>
 
                    
                 </div>

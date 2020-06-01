@@ -20,7 +20,7 @@
     <link rel="stylesheet" href="{% static 'css/index.css' %}">
     <script src="{% static 'js/index.js' %}"></script>
 
-    
+
 </head>
 
 <body>
@@ -44,32 +44,34 @@
                 </ul>
             </div>
         </nav>
-        <a href="delete/">초기화</a>
+
         <div class="col">
-            <div class="bg-light container p-4 mt-12 footerBox border">
+            <div class="bg-light container p-4 mt-2 footerBox border">
                 <div class="row">
                     <form action="{% url 'show_list'%}" method="POST" class="form-inline">
                         {% csrf_token %}
-                        <table>
+                        <table align="center">
                             <tr>
                                 <td style="background-color: white;">
-                                    <select name="s1" id="searchOs">
+                                    <select name="s1" id="searchOs" class="form-control">
                                         <option selected value="">os선택</option>
                                         <option value="윈도우">windows</option>
                                         <option value="맥">mac</option>
                                     </select>
-                                    <select name="s2" id="searchProg">
+                                    <select name="s2" id="searchProg" class="form-control">
                                         <option selected value="">프로그램 선택</option>
                                         <option value="일러스트">일러스트</option>
                                         <option value="포토샵">포토샵</option>
                                         <option value="엑셀">엑셀</option>
                                     </select>
-                                    <input type="text" class="form-control" id="searchValue" name="searchValue" size="60px" placeholder=" 찾으실 단축키이름을 입력하세요">
-                                    <button type="submit" id="searchBtn"><img src="{% static 'img/search.svg' %}"
-                                            class="searchImg"></button>
+                                    <input type="text" class="form-control" id="searchValue" name="searchValue"
+                                        size="60px" placeholder=" 찾으실 단축키이름을 입력하세요">
+                                    <button type="submit" id="searchBtn" class="form-control"><img
+                                            src="{% static 'img/search.svg' %}" class="searchImg"></button>
                                 </td>
                             </tr>
                         </table>
+                        <a href="delete/">초기화하기</a>
 
                         <table bgcolor="#e9ecef" class="table text-center">
                             <thead>
