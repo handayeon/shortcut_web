@@ -3,9 +3,16 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" http-equiv="Content-Type" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Alvaro Trigo Lopez" />
+	<meta name="description" content="fullPage full-screen navigation and sections control menu." />
+	<meta name="keywords"  content="fullpage,jquery,demo,screen,fullscreen,navigation,control arrows, dots" />
+	<meta name="Resource-type" content="Document" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
 
     <!--import bootstrap -->
+     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" type="text/css" media="all" />
+
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -16,199 +23,194 @@
     <link rel="shortcut icon" href="{% static 'img/icon.svg' %}">
     <link rel="icon" href="{% static 'img/icon.svg' %}">
     <link rel="stylesheet" href="{% static 'css/index.css' %}">
+    <link rel="stylesheet" href="{% static 'css/thirdsection.css' %}">
     <script src="{% static 'js/index.js' %}"></script>
-    <script>
-        function sm() {
-            f1.action = "{% url 'show_list'%}";
-            f1.submit();
-        }
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+
+
+        <script type="text/javascript">
+        //using document ready...
+        $(document).ready(function(){
+
+            //initialising fullpage.js in the jQuery way
+            $('#fullpage').fullpage({
+                sectionsColor: ['#FF7BAC', '#FF7BAC', '#FF7BAC', '#FF7BAC'],
+                navigation: true,
+                slidesNavigation: true,
+            });
+
+        });
     </script>
+
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.js"></script>
+    <script src="{% static 'js/script.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+    <style type="text/css">
+    #actions{
+        position:fixed;
+        top: 73px;
+        left: 30px;
+        z-index: 99999;
+    }
+    #actions a{
+        background: rgba(0,0,0,0.8);
+        padding: 7px;
+        margin: 2px;
+        color: #ccc;
+        display: inline-block;
+    }
+    #actions a:hover{
+        color: #fff;
+        background: #81A140;
+    }
+    font {
+        font-family: "여기어때 잘난체 OTF";
+    }
+    #sha {
+
+        text-shadow: -2px 0 #3327FF, 0 2px #3327FF, 2px 0 #3327FF, 0 -2px #3327FF;
+
+    }
+
+    </style>
 
 </head>
 
 <body>
 
-    <div class="container">
-
-
         <!-- 상단 네비게이션 바 -->
         <nav class="navbar navbar-expand-lg navbar-light mt-3 mb-3">
-            <a class="navbar-brand" href="{% url 'index' %}"><img src="{% static 'img/logo.svg' %}" alt="logo"
-                    id="logo"></a>
+            <a class="navbar-brand" href="{% url 'index' %}">
+                <font id="sha" size = "17" color = "#FFFFFF">지름길</font>
+            </a>
             <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
                 data-target="#navbarTop" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
-            <div class="collapse navbar-collapse" id="navbarTop">
+            <div class="collapse navbar-collapse" id="navbarTop" id="actions">
                 <ul class="navbar-nav ml-auto">
-                    <li class="nav-item"><a class="nav-link" href="{% url 'index' %}" id="home">홈</a> </li>
-                    <li class="nav-item"><a class="nav-link" href="{% url 'show_list' %}" id="list">목록보기</a> </li>
-                    <li class="nav-item"><a class="nav-link" href="{% url 'register' %}" id="register">등록하기</a> </li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'show_list' %}" id="list">
+                            <font color="#FFFFFF">목록보기</font></a>
+                        </li>
+
+                        <li class="nav-item"><a class="nav-link" href="{% url 'register' %}" id="register">
+                            <font color="#FFFFFF">등록하기</font></a>
+                        </li>
                 </ul>
             </div>
         </nav>
 
 
-        <!-- 슬라이드 -->
-        <div id="demo" class="carousel slide mb-4 border" data-ride="carousel">
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <img class="d-block w-100" src="{% static 'img/mainImg1.svg' %}" alt="First slide" id="mainImg1">
-                </div>
-                <div class="carousel-item">
-                    <img class="d-block w-100" src="{% static 'img/mainImg2.svg' %}" alt="Second slide" id="mainImg2">
-                </div>
-                <div class="carousel-item">
-                    <img class="d-block w-100" src="{% static 'img/mainImg3.svg' %}" alt="Third slide" id="mainImg3">
-                </div>
 
-                <a class="carousel-control-prev" href="#demo" data-slide="prev">
-                    <img src="{% static 'img/left.svg' %}" alt="previous arrow">
-                </a>
-                <a class="carousel-control-next" href="#demo" data-slide="next">
-                    <img src="{% static 'img/right.svg' %}" alt="next arrow">
-                </a>
+<div id="fullpage">
 
-                <!-- 인디케이터 -->
-                <ul class="carousel-indicators">
-                    <li data-target="#demo" data-slide-to="0" class="active"></li>
-                    <li data-target="#demo" data-slide-to="1"></li>
-                    <li data-target="#demo" data-slide-to="2"></li>
-                </ul>
+    <div class="section">
+        <div class="intro">
+            <div style="position: absolute; top:100px;">
+                <div style="position: relative; left:-100px">
+                    <img src="{% static 'img/a.png' %}" width = "1900" height = "500"></img></div>
             </div>
-        </div>
-
-
-        <!-- 하단 두 개 영역: 새로 등록된 단축키, 단축키 검색 -->
-        <div class="row mb-5">
-            <div class="col">
-                새로 등록된 단축키 <img src="{% static 'img/new.svg' %}" alt="new icon" id="new-icon"> <img
-                    src="{% static 'img/macOS.svg' %}" alt="macOS icon" id="mac-icon">
-                <div class="bg-light container p-4 mt-2 footerBox border text-right">
-                    <table class="table text-center">
-                        <thead>
-                            <tr>
-                                <th>No</th>
-                                <th>프로그램</th>
-                                <th>수행작업</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>Ai</td>
-                                <td class="text-left">그룹 해제하기</td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>Ps</td>
-                                <td class="text-left">전체 이미지 밝게 하기</td>
-                            </tr>
-                            <tr>
-                                <td>3</td>
-                                <td>Ps</td>
-                                <td class="text-left">정리 도구가 선택될 때 불투명도 ...</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <button class="btn btn-sm btn-primary" onclick=location.href="{% url 'show_list' %}">
-                        전체 단축키 보기
-                    </button>
-                </div>
+            <div style="position: absolute; top:200px;">
+                <div style="position: relative; left: 750px;">
+                    <img src="{% static 'img/nugu_ai.png' %}" width = "150" height = "400"></img></div>
             </div>
-            <!-- 하단 새로 등록된 단축키 영역 끝 -->
-            <div class="col">
-                단축키 검색 <img src="{% static 'img/search.svg' %}" alt="search icon" id="search-icon">
-                <div class="bg-light container p-4 mt-2 footerBox border">
-                    <div class="row">
-                        <div class="col-xs-12">
-                            <div class="card-body">
-                                <div class="row">
-                                    <form action="{% url 'index'%}" method="POST" name=f1 class="form-inline">
-                                        {% csrf_token %}
-                                        <div class="col-xs-2">
-                                            <div class="form-group">
-                                                <select id="inputState" class="form-control" name=s1>
-                                                    <option selected>OS 선택</option>
-                                                    <option>윈도우</option>
-                                                    <option>맥</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="col-xs-3">
-                                            <div class="form-group">
-                                                <select id="inputState" class="form-control" name=s2>
-                                                    <option selected>프로그램 선택</option>
-                                                    <option>일러스트</option>
-                                                    <option>포토샵</option>
-                                                    <option>엑셀</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="col-xs-6">
-                                            <div class="form-group">
-                                                <input type="text" placeholder="입력" class="form-control"
-                                                    name="searchValue">
-                                            </div>
-                                        </div>
-                                        <div class="col-xs-1">
-                                            <button type="submit" class="btn"><img src="{% static 'img/search.svg' %}"
-                                                    alt="search icon" id="search-icon"></button>
-                                        </div>
-                                    </form>
-                            
-                                </div>
-                                <div class="row text-center mt-4">
-                                    <table class="table text-center">
-                                        <thead>
-                                            <tr>
-                                                <th>No</th>
-                                                <th>Os</th>
-                                                <th>프로그램</th>
-                                                <th>수행작업</th>
-                                                <th>단축키</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            {% if short_lists == None %}
-                                            <tr>
-                                                <td colspan="5">검색 결과가 없습니다.</td>
-                                            </tr>
-                                            {% endif %}
-
-                                            {% for short_list in short_lists %}
-                                            <tr>
-                                                <td id="listNum">{{short_list.num}}</td>
-                                                <td id="os">{{short_list.os}}</td>
-                                                <td id="program">{{short_list.program}}</td>
-                                                <td id="listRepValue">{{short_list.action}}</td>
-                                                <td id="listShortValue">{{short_list.short}}</td>
-                                            </tr>
-                                            {% endfor %}
-                                        </tbody>
-                                    </table>
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row text-center mt-4">
-                        <div class="col">
-                            <a href="{% url 'show_list' %}"> 검색결과 보러가기 → </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 하단 단축키 검색 영역 끝 -->
         </div>
     </div>
 
+    <div class="section">
+        <div style="position: absolute; top:80px;">
+                <div style="position: relative; left: 150px;">
+                    <img src="{% static 'img/nugu_ai.png' %}" width = "150" height = "400"></img>
+                </div>
+        </div>
+        <div class="typewriter" style="position: absolute; left:400px; top:80px;">
+            <h1><font color="FAFF00" size = "17" >안녕하세요!</font></h1>
+            <br><br>
+            <h1><font color="white" size = "17">AI 인공지능 스피커 NUGU의<br> 단축키 알림 서비스, </font>
+            <font color = "3327FF" size="17">지름길입니다.</font></h1>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class=”embed-responsive embed-responsive-16by9“>
+            <iframe width="700" height="500" src="https://www.youtube.com/embed/yNQps5sMojw?amp;autoplay=1&amp;
+                    playlist="yNQps5sMojw&amp;loop=1"
+                    frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope;
+                    picture-in-picture" allowfullscreen="">
+            </iframe>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="wrapper">
+            <ul class="team">
+                <li class="team-item">
+                    <div class="profile">
+                        <img src="{% static 'img/강은서.png' %}">
+                        <div class="profile-contents">
+                        	<h2 style="font-family: 여기어때 잘난체">강은서<span>웹 프론트엔드/디자인</span></h2>
+                        	<p style="font-family: 여기어때 잘난체">뉴미디어솔루션과<br>github.com/KangEunseo</p>
+                        </div>
+                    </div>
+                </li>
+                <li class="team-item">
+                    <div class="profile">
+                        <img src="{% static 'img/남정윤.png' %}">
+                        <div class="profile-contents">
+                        	<h2 style="font-family: 여기어때 잘난체">남정윤<span>웹 백엔드/서버</span></h2>
+                        	<p style="font-family: 여기어때 잘난체">뉴미디어솔루션과<br>github.com/Daria0412</p>
+                        </div>
+                    </div>
+                </li>
+                <li class="team-item">
+                    <div class="profile">
+                        <img src="{% static 'img/오승연.png' %}">
+                        <div class="profile-contents">
+                        	<h2 style="font-family: 여기어때 잘난체">오승연<span>웹 프론트엔드/서버</span></h2>
+                        	<p style="font-family: 여기어때 잘난체">뉴미디어솔루션과<br>github.com/OhSeungYeon</p>
+                        </div>
+                    </div>
+                </li>
+                <li class="team-item">
+                    <div class="profile">
+                        <img src="{% static 'img/윤희나.png' %}">
+                        <div class="profile-contents">
+                        	<h2 style="font-family: 여기어때 잘난체">윤희나<span>웹 프론트엔드/서버</span></h2>
+                        	<p style="font-family: 여기어때 잘난체">뉴미디어솔루션과<br>github.com/yunwhite</p>
+                        </div>
+                    </div>
+                </li>
+                <li class="team-item">
+                    <div class="profile">
+                        <img src="{% static 'img/한다연.png' %}">
+                        <div class="profile-contents">
+                        	<h2 style="font-family: 여기어때 잘난체">한다연<span>웹 프론트엔드</span></h2>
+                        	<p style="font-family: 여기어때 잘난체">뉴미디어솔루션과<br>github.com/handayeon</p>
+                        </div>
+                    </div>
+                </li>
+                <li class="team-item">
+                    <div class="profile">
+                        <img src="{% static 'img/함지현.png' %}">
+                        <div class="profile-contents">
+                        	<h2 style="font-family: 여기어때 잘난체">함지현<span>웹 프론트엔드/백엔드</span></h2>
+                        	<p style="font-family: 여기어때 잘난체">뉴미디어솔루션과<br>github.com/hamjihyeon</p>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+</div>
 
     <!-- js setting -->
     <script src="{% static 'js/index.js' %}"></script>
+
+
 </body>
 
 </html>

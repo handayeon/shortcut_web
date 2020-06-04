@@ -19,6 +19,16 @@
     <link rel="icon" href="{% static 'img/icon.svg' %}">
     <link rel="stylesheet" href="{% static 'css/index.css' %}">
     <script src="{% static 'js/index.js' %}"></script>
+
+    <style>
+    #sha {
+
+        text-shadow: -2px 0 #3327FF, 0 2px #3327FF, 2px 0 #3327FF, 0 -2px #3327FF;
+
+    }
+    </style>
+
+
 </head>
 
 <body>
@@ -27,8 +37,9 @@
     <div class="container">
         <!-- 상단 네비게이션 바 -->
         <nav class="navbar navbar-expand-lg navbar-light mt-3 mb-3">
-            <a class="navbar-brand" href="{% url 'index' %}"><img src="{% static 'img/logo.svg' %}" alt="logo"
-                    id="logo"></a>
+            <a class="navbar-brand" href="{% url 'index' %}">
+                <font id="sha" size = "17" color = "#FFFFFF">지름길</font>
+            </a>
             <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
                 data-target="#navbarTop" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -42,92 +53,67 @@
                 </ul>
             </div>
         </nav>
-        <a href="delete/">초기화</a>
+
         <div class="col">
-            <div class="bg-light container p-4 mt-12 footerBox border">
+            <div class="bg-light container p-4 mt-2 footerBox border">
                 <div class="row">
                     <form action="{% url 'show_list'%}" method="POST" class="form-inline">
                         {% csrf_token %}
-                        <table>
+                        <table align="center">
                             <tr>
                                 <td style="background-color: white;">
-                                    <select name="s1" id="searchOs">
+                                    <select name="s1" id="searchOs" class="form-control">
                                         <option selected value="">os선택</option>
                                         <option value="윈도우">windows</option>
                                         <option value="맥">mac</option>
                                     </select>
-                                    <select name="s2" id="searchProg">
+                                    <select name="s2" id="searchProg" class="form-control">
                                         <option selected value="">프로그램 선택</option>
                                         <option value="일러스트">일러스트</option>
                                         <option value="포토샵">포토샵</option>
                                         <option value="엑셀">엑셀</option>
                                     </select>
-                                    <input type="text" name="searchValue" width="80px" placeholder=" 찾으실 단축키이름을 입력하세요"
-                                        id="searchValue"  size="100px;">
-                                    <button type="submit" id="searchBtn"><img src="{% static 'img/search.svg' %}"
-                                            class="searchImg"></button>
+                                    <input type="text" class="form-control" id="searchValue" name="searchValue"
+                                        size="60px" placeholder=" 찾으실 단축키이름을 입력하세요">
+                                    <button type="submit" id="searchBtn" class="form-control"><img
+                                            src="{% static 'img/search.svg' %}" class="searchImg"></button>
                                 </td>
                             </tr>
                         </table>
+                        <a href="delete/">초기화하기</a>
 
-                    <table bgcolor="#e9ecef" class="table text-center">
-                        <thead>
-                            <tr>
-                                <th>No</th>
-                                <th>Os</th>
-                                <th>프로그램</th>
-                                <th>수행작업</th>
-                                <th>단축키</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {% if short_lists == None %}
-                            <tr>
-                                <td colspan="5">검색 결과가 없습니다.</td>
-                            </tr>
-                            {% else %}
-                            {% paginate short_lists %}
-                            {% for short_list in short_lists %}
-                            <tr>
-                                <td id="listNum">{{short_list.num}}</td>
-                                <td id="os">{{short_list.os}}</td>
-                                <td id="program">{{short_list.program}}</td>
-                                <td id="listRepValue">{{short_list.action}}</td>
-                                <td id="listShortValue">{{short_list.short}}</td>
-                                
-                            </tr>
-                            {% endfor %}
+                        <table bgcolor="#e9ecef" class="table text-center">
+                            <thead>
+                                <tr>
+                                    <th>No</th>
+                                    <th>Os</th>
+                                    <th>프로그램</th>
+                                    <th>수행작업</th>
+                                    <th>단축키</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% if short_lists == None %}
+                                <tr>
+                                    <td colspan="5">검색 결과가 없습니다.</td>
+                                </tr>
+                                {% else %}
+                                {% paginate short_lists %}
+                                {% for short_list in short_lists %}
+                                <tr>
+                                    <td id="listNum">{{short_list.num}}</td>
+                                    <td id="os">{{short_list.os}}</td>
+                                    <td id="program">{{short_list.program}}</td>
+                                    <td id="listRepValue">{{short_list.action}}</td>
+                                    <td id="listShortValue">{{short_list.short}}</td>
+                                </tr>
+                                {% endfor %}
                         </table>
-
-
                 </div>
-
                 <div align="center">{% show_pages %}</div>
-
-                <div class="pagination">
-                    <span class="step-links">
-                        {% if contacts.has_previous %}
-                            <a href="?page=1">&laquo; first</a>
-                            <a href="?page={{ contacts.previous_page_number }}">previous</a>
-                        {% endif %}
-                
-                        <span class="current">
-                            Page {{ contacts.number }} of {{ contacts.paginator.num_pages }}.
-                        </span>
-                
-                        {% if contacts.has_next %}
-                            <a href="?page={{ contacts.next_page_number }}">next</a>
-                            <a href="?page={{ contacts.paginator.num_pages }}">last &raquo;</a>
-                        {% endif %}
-                    </span>
-                </div>
-                
+                {% endif %}
             </div>
-            
         </div>
-
-        {% endif %}
 </body>
-
 
 </html>

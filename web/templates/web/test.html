@@ -1,0 +1,79 @@
+<html>
+
+<head>
+    <title>test</title>
+{% load static %}
+<!-- <link rel="stylesheet" href="{% static 'css/r2.css' %}"> -->
+<!-- <script language="javascript" src="{% static 'js/r2.js' %}"></script> -->
+
+<!--import bootstrap -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.6/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+
+<!-- icon & css setting -->
+<link rel="shortcut icon" href="{% static 'img/icon.svg' %}">
+<link rel="icon" href="{% static 'img/icon.svg' %}">
+<link rel="stylesheet" href="{% static 'css/index.css' %}">
+<script src="{% static 'js/index.js' %}"></script>
+
+
+
+</head>
+
+<body bgcolor="#E2E2E2">
+    <div class="container">
+
+
+        <!-- 상단 네비게이션 바 -->
+        <nav class="navbar navbar-expand-lg navbar-light mt-3 mb-3">
+            <a class="navbar-brand" href="#"><img src="{% static 'img/logo.svg' %}" alt="logo" id="logo"></a>
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+                data-target="#navbarTop" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarTop">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item"><a class="nav-link" href="{% url 'index' %}" id="home">홈</a> </li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'show_list' %}" id="list">목록보기</a> </li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'register' %}" id="register">등록하기</a> </li>
+                </ul>
+            </div>
+        </nav>
+
+           
+            <!-- 하단 새로 등록된 단축키 영역 끝 -->
+            <div class="col">
+                <div class="bg-light container p-4 mt-2 footerBox border">
+                    <div class="container">
+                        <form>
+                          <div class="form-group row">
+                            <div class="col-xs-2">
+                              <input class="form-control" id="ex1" type="text">
+                            </div>
+                            <div class="col-xs-3">
+                              <input class="form-control" id="ex2" type="text">
+                            </div>
+                            <div class="col-xs-4">
+                              <input class="form-control" id="ex3" type="text">
+                            </div>
+                          </div>
+                        </form>
+                      </div>
+
+                   
+                </div>
+            </div>
+
+        
+
+        
+
+</body>
+
+</html>
