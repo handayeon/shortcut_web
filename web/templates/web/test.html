@@ -1,27 +1,37 @@
 <html>
 
 <head>
-    <title>test</title>
-{% load static %}
-<!-- <link rel="stylesheet" href="{% static 'css/r2.css' %}"> -->
-<!-- <script language="javascript" src="{% static 'js/r2.js' %}"></script> -->
+    <title>register</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/r2.css' %}">
+    <script language="javascript" src="{% static 'js/r2.js' %}"></script>
 
-<!--import bootstrap -->
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.6/umd/popper.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-
-
-<!-- icon & css setting -->
-<link rel="shortcut icon" href="{% static 'img/icon.svg' %}">
-<link rel="icon" href="{% static 'img/icon.svg' %}">
-<link rel="stylesheet" href="{% static 'css/index.css' %}">
-<script src="{% static 'js/index.js' %}"></script>
+    <!--import bootstrap -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.6/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
 
+
+    <!-- icon & css setting -->
+    <link rel="shortcut icon" href="{% static 'img/icon.svg' %}">
+    <link rel="icon" href="{% static 'img/icon.svg' %}">
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+    <script src="{% static 'js/index.js' %}"></script>
+    <script>
+        if ('{{result}}' == "success") alert("등록에 성공하셨습니다.");
+    </script>
+
+    <style>
+        #sha {
+
+            text-shadow: -2px 0 #3327FF, 0 2px #3327FF, 2px 0 #3327FF, 0 -2px #3327FF;
+
+        }
+    </style>
 
 </head>
 
@@ -31,7 +41,9 @@
 
         <!-- 상단 네비게이션 바 -->
         <nav class="navbar navbar-expand-lg navbar-light mt-3 mb-3">
-            <a class="navbar-brand" href="#"><img src="{% static 'img/logo.svg' %}" alt="logo" id="logo"></a>
+            <a class="navbar-brand" href="{% url 'index' %}">
+                <font id="sha" size="17" color="#FFFFFF">지름길</font>
+            </a>
             <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
                 data-target="#navbarTop" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -46,33 +58,62 @@
             </div>
         </nav>
 
-           
-            <!-- 하단 새로 등록된 단축키 영역 끝 -->
-            <div class="col">
-                <div class="bg-light container p-4 mt-2 footerBox border">
-                    <div class="container">
-                        <form>
-                          <div class="form-group row">
-                            <div class="col-xs-2">
-                              <input class="form-control" id="ex1" type="text">
-                            </div>
-                            <div class="col-xs-3">
-                              <input class="form-control" id="ex2" type="text">
-                            </div>
-                            <div class="col-xs-4">
-                              <input class="form-control" id="ex3" type="text">
-                            </div>
-                          </div>
-                        </form>
-                      </div>
+        <div class="col">
+            <div class="bg-light container p-4 mt-2 footerBox border">
 
-                   
-                </div>
+                <form action="{% url 'register'%}" method="POST">
+                    {% csrf_token %}
+                    <div class="row">
+                        <div class="col-md-6">
+                            <select name="s1" id="regOs" class="form-control" style="background-color: white;">
+                                <option selected value="">os선택</option>
+                                <option value="맥">맥</option>
+                                <option value="윈도우">윈도우</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <select name="s2" id="regProg" class="form-control" style="background-color: white;">
+                                <option selected value="">프로그램 선택</option>
+                                <option value="엑셀">엑셀</option>
+                                <option value="포토샵">포토샵</option>
+                                <option value="일러스트">일러스트</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-10"><input type="text" placeholder="수행할 작업 대표값 입력(예: 복사하기)" id="regRepValue"
+                                class="form-control" style="background-color: white;"></div>
+                        <div class="col-md-1"><input name="addButton" type="button"
+                                style="cursor:hand; background-color: white;" onClick="insRow()" value="+"
+                                class="form-control"></div>
+                        <div class="col-md-1"><input name="removeButton" type="button"
+                                style="cursor:hand; background-color: white;" onClick="removeRow()" value="x"
+                                class="form-control"></div>
+                    </div>
+
+                    <div id="regSynValue">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <input type="text" name="regSynValue" class="form-control" style="background-color: white;"
+                                    placeholder="위에서 입력한 값의 동의어를 입력하세요(예:복제하기, 똑같이 만들기...)">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-8"></div>
+                        <div class="col-md-1"><input type="reset" id="cancelBtn" value="취소"
+                                class="btn btn-danger btn-sm"></div>
+                        <div class="col-md-1"><input type="submit" id="ApplyBtn" value="등록신청"
+                                class="btn btn-success btn-sm"></div>
+                    </div>
+                </form>
+
             </div>
+        </div>
 
-        
-
-        
+    </div>
 
 </body>
 

@@ -11,7 +11,9 @@ select {
 option {
     background-color: #ffffff;
 }
-
+.container {
+    width: 100%;
+}
 /* 
 input[type=text] {
     width: 900px;
