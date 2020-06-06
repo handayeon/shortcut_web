@@ -14,7 +14,9 @@ option {
 .container {
     width: 100%;
 }
-
+#sha {
+    text-shadow: -2px 0 #3327FF, 0 2px #3327FF, 2px 0 #3327FF, 0 -2px #3327FF;
+}
 /* 
 input[type=text] {
     width: 900px;

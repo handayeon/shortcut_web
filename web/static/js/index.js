@@ -19,6 +19,16 @@ $('#new-icon').hover(function() {
 
 equalHeights( $('.footerBox') );
 
+        $(document).ready(function(){
+
+            //initialising fullpage.js in the jQuery way
+            $('#fullpage').fullpage({
+                sectionsColor: ['#FF7BAC','#FF7BAC','#FF7BAC','#FF7BAC'],
+                navigation: true,
+                slidesNavigation: true,
+            });
+
+        });
 
 
 
