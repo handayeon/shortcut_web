@@ -88,20 +88,20 @@
                         <div class="col-md-1">
                             <input name="addButton" type="button" style="cursor:hand; background-color: #e2e2e2;"
                                 onClick="insRow()" value="+" class="form-control"></div>
-                        <!-- <div class="col-md-1"><input name="removeButton" type="button"
-                                style="cursor:hand; background-color: white;" onClick="removeRow(this)" value="x"
-                                class="form-control"></div> -->
                     </div>
+                    
                     <font size="2px">동의어를 원하시면 +를 누르세요</font>
 
-                    <div class="row" style="display: none;" id="regSynValue">
-                            <input type="text" class="form-control" name="regSynValue"placeholder="위에서 입력한 값의 동의어를 입력하세요(예:복제하기, 똑같이 만들기...)">
-                            <input name="removeButton" type="button" class="form-control" style="cursor:hand; background-color: white;" value="x" onclick="remove_item(this)">
+                    <div class="row form-group">
+                        <div id="regSynValue" style="display: none;">
+                                <input type="text" class="form-control"
+                                placeholder="위에서 입력한 값의 동의어를 입력하세요(예:복제하기, 똑같이 만들기...)">
+                                <input type="button" class="form-control" step="cursor:hand; background-color:white;"
+                                 value="x" onclick="remove_item(this)"><br>
+                        </div>
                     </div>
 
-                    <div id="field" class="form-group">
-                        <div class="col-md-10"></div>
-                        <div class="col-md-2"></div>
+                    <div id="field">
                     </div>
 
                     <div class="row form-group">
